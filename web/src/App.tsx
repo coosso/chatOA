@@ -1,35 +1,52 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+import React, { useState } from 'react';
 
-function App() {
-  const [count, setCount] = useState(0)
+const ChatWindow: React.FC = () => {
+  // 用于存储用户输入的消息
+  const [inputMessage, setInputMessage] = useState('');
+  // 用于存储聊天消息列表
+  const [messages, setMessages] = useState<string[]>([]);
+
+  // 处理输入框内容变化
+  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setInputMessage(e.target.value);
+  };
+
+  // 处理提交消息
+  const handleSubmit = (e: React.FormEvent) => {
+    e.preventDefault();
+    if (inputMessage.trim()) {
+      setMessages([...messages, inputMessage]);
+      setInputMessage('');
+    }
+  };
 
   return (
-    <>
-      <div>
-        <a href="https://vite.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
+    <div style={{ maxWidth: '600px', margin: '0 auto', fontFamily: 'Arial, sans-serif' }}>
+      <div style={{ height: '400px', border: '1px solid #ccc', overflowY: 'auto', padding: '10px', marginBottom: '10px' }}>
+        {messages.map((msg, index) => (
+          <div key={index} style={{ marginBottom: '8px' }}>
+            {msg}
+          </div>
+        ))}
       </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
+      <form onSubmit={handleSubmit}>
+        <input
+          type="text"
+          value={inputMessage}
+          onChange={handleInputChange}
+          placeholder="请输入消息..."
+          style={{ width: '80%', padding: '8px', boxSizing: 'border-box' }}
+        />
+        <button type="submit" style={{ width: '18%', padding: '8px', marginLeft: '2%' }}>
+          发送
         </button>
-        <p>
-          Edit <code>src/App.tsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </>
-  )
-}
+      </form>
+    </div>
+  );
+};
 
-export default App
+const App: React.FC = () => {
+  return <ChatWindow />;
+};
+
+export default App;
