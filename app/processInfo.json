@@ -1,0 +1,70 @@
+[
+    {
+        "types": 1,
+        "title": "审核人",
+        "uniqued": "aca99f04de8bff706",
+        "level": 1,
+        "select_mode": 0,
+        "examine_mode": 3,
+        "settype": 1,
+        "no_hander": 2,
+        "users": [
+            {
+                "id": 1,
+                "uid": "125f2ee60dec4ef5bc5f91b6182c98e5",
+                "name": "李恒",
+                "avatar": "https://shmily-album.oss-cn-shenzhen.aliyuncs.com/admin_face/face5.png",
+                "isDelete": true
+            },
+            {
+                "id": 6,
+                "uid": "09daef6914264b8990624899cfb1e099",
+                "name": "顾唯朵",
+                "avatar": "https://shmily-album.oss-cn-shenzhen.aliyuncs.com/admin_face/face5.png",
+                "isDelete": true
+            },
+            {
+                "id": 8,
+                "uid": "cef8315304fb4b77b9c8f5447930bd63",
+                "name": "哈哈哈",
+                "avatar": "https://demo.tuoluojiang.com/uploads/attach/2025/06/3095d202506241428461165.png",
+                "isDelete": true
+            }
+        ]
+    },
+    {
+        "types": 1,
+        "title": "审核人",
+        "uniqued": "c230cde49138b920b",
+        "level": 2,
+        "select_mode": 1,
+        "examine_mode": 3,
+        "settype": 4,
+        "no_hander": 2,
+        "options": [],
+        "users": [
+            {
+                "id": "6-1",
+                "name": "顾唯朵",
+                "avatar": "https://shmily-album.oss-cn-shenzhen.aliyuncs.com/admin_face/face5.png",
+                "phone": "13289560013",
+                "job": {
+                    "id": 2,
+                    "name": "副总经理",
+                    "rank_id": 2
+                },
+                "uid": "09daef6914264b8990624899cfb1e099",
+                "laravel_through_key": 1,
+                "user_card": {
+                    "id": 6,
+                    "type": 1
+                },
+                "value": 6,
+                "pid": 1,
+                "label": "顾唯朵",
+                "type": 1,
+                "disabled": false
+            }
+        ]
+    }
+]
