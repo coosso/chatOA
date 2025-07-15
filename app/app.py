@@ -4,6 +4,6 @@ app = FastAPI()
 
 result = 'ss'
 
-@app.get("/result")
+@app.get("/")
 def get_result():
     return {"result": result}

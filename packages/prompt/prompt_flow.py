@@ -20,6 +20,7 @@ JSON 格式示例：
     "reason": "具体请假理由"
 }
 时间为yyyy/MM/dd HH:mm:ss格式
+durationj为小时数
 返回纯json数据，不要有markdonwn格式
 如果用户输入中未明确开始时间或结束时间，相应字段可以为空字符串。如果没有明确的请假理由，理由字段可以填写“未说明”。"""
 
@@ -44,8 +45,8 @@ async def extract_leave_info(user_input):
         print(f"调用大模型时出现错误: {e}")
         return None
 
-# 示例用户输入
-user_input = "明天是2026年7月1日，帮我请个明天的假，理由是因为要去参加一个重要的家庭聚会。"
-result = extract_leave_info(user_input)
-if result:
-    print(result)
+if __name__ == "__main__":
+    user_input = "明天是2026年7月1日，帮我请个明天的假，理由是因为要去参加一个重要的家庭聚会。"
+    result = extract_leave_info(user_input)
+    if result:
+        print(result)
