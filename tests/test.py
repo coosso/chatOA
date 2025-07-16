@@ -1,17 +1,20 @@
-class MyNumber:
-    def __init__(self, value):
-        self.value = value
-
-    # 定义加法魔术方法
-    def __add__(self, other):
-        return MyNumber(self.value + other.value*10)
-
-    def __str__(self):
-        return str(str(self.value)+"xxxx")
+import asyncio
+async def task1():
+    await asyncio.sleep(1)
+    print("任务1完成")
 
 
+async def task2():
+    await asyncio.sleep(0.5)
+    print("任务2完成")
 
-num1 = MyNumber(5)
-num2 = MyNumber(3)
-result = num1 + num2
-print(result)  # 输出: 8
+
+async def main():
+    # 创建并运行多个任务
+    await asyncio.gather(task1(), task2())
+
+
+asyncio.run(main())
+# 输出:
+# 任务2完成
+# 任务1完成
