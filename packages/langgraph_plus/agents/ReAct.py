@@ -4,6 +4,7 @@ from langchain_core.messages import BaseMessage # The foundational class for all
 from langchain_core.messages import ToolMessage # Passes data back to LLM after it calls a tool such as the content and the tool_call_id
 from langchain_core.messages import SystemMessage # Message for providing instructions to the LLM
 from langchain_openai import ChatOpenAI
+from langchain_community.chat_models import ChatTongyi
 from langchain_core.tools import tool
 from langgraph.graph.message import add_messages
 from langgraph.graph import StateGraph, END
@@ -34,7 +35,9 @@ def multiply(a: int, b: int):
 
 tools = [add, subtract, multiply]
 
-model = ChatOpenAI(model = "gpt-4o").bind_tools(tools)
+# model = ChatOpenAI(model = "gpt-4o").bind_tools(tools)
+model = ChatTongyi(model="qwen-plus").bind_tools(tools)
+
 
 
 def model_call(state:AgentState) -> AgentState:
@@ -52,7 +55,7 @@ def should_continue(state: AgentState):
         return "end"
     else:
         return "continue"
-    
+
 
 graph = StateGraph(AgentState)
 graph.add_node("our_agent", model_call)
@@ -84,5 +87,5 @@ def print_stream(stream):
         else:
             message.pretty_print()
 
-inputs = {"messages": [("user", "Add 40 + 12 and then multiply the result by 6. Also tell me a joke please.")]}
+inputs = {"messages": [("user", "Add 40 + 12 and then multiply the result by 6(do not use tools). Also tell me a joke please.")]}
 print_stream(app.stream(inputs, stream_mode="values"))

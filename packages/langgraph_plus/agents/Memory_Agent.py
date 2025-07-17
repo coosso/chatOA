@@ -1,7 +1,8 @@
 import os
 from typing import TypedDict, List, Union
 from langchain_core.messages import HumanMessage, AIMessage
-from langchain_openai import ChatOpenAI
+# from langchain_openai import ChatOpenAI
+from langchain_community.chat_models import ChatTongyi
 from langgraph.graph import StateGraph, START, END
 from dotenv import load_dotenv
 
@@ -10,7 +11,7 @@ load_dotenv()
 class AgentState(TypedDict):
     messages: List[Union[HumanMessage, AIMessage]]
 
-llm = ChatOpenAI(model="gpt-4o")
+llm = ChatTongyi(model="qwen-plus")
 
 def process(state: AgentState) -> AgentState:
     """This node will solve the request you input"""
